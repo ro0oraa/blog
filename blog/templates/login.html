@@ -1,0 +1,15 @@
+ {% extends 'layout.html'%}
+ {%block head%}
+
+<h1>hello</h1>
+{%endblock %}
+
+{%block body%}
+<div class="content-section">
+    <form method="POST" action="home.html">
+
+        {{form.hidden_tag()}}
+    </form>
+</div>
+
+{%endblock%}

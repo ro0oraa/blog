@@ -1,0 +1,75 @@
+{% extends 'layout.html'%}
+{%block head%}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+<style>
+  #map {
+    height: 200px;
+  }
+</style>
+<div id="map"></div>
+
+{%endblock%}
+{%block body%}
+ {%for lan in langs%}
+<input id="{{lan.id}}" type="hidden" value="{{lan.l1}} ,{{lan.l2}}" class="gg">
+{%endfor%}
+
+{%endblock%}
+{%block footer%}
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+  </script>
+  
+<script type="text/javascript" src="{{ url_for('static', filename = 'mapjs.js') }}"></script>
+
+
+
+<script>
+//$(document).ready(function(){ 
+ // var data ='{{langs}}'
+  //alert( data)
+ //alert(getElementById("lannnn").value)
+ //alert(document.getElementsByClassName('gg')[0].value() )
+
+{%for lan in langs%}
+var marker = L.marker({{lan.l1}},{{lan.l2}}).addTo(map);
+{%endfor%}
+
+
+ //for (let i = 0; i < document.getElementsByClassName('gg').length; i++) {
+  //var m=document.getElementsByClassName('gg')[i].value
+ // alert(m.split(',')[0])
+ 
+  // alert(m.split(',')[0])
+ //var marker = L.marker(m.split(',')[0],m.split(',')[1]).addTo(map);
+ //console.log(parseFloat(m.split(',')[0]),parseFloat(m.split(',')[1]))
+ //var marker = L.marker([51.5, -0.09]).addTo(map);
+ //var marker = L.marker(parseFloat(m.split(',')[0]),parseFloat(m.split(',')[1],15)).addTo(map);
+
+ //}
+
+
+//var map = L.map('map').setView([51.505, -0.09], 13);
+//L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  //  maxZoom: 19,
+    //attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+//}).addTo(map);
+
+//L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  //  maxZoom: 19,
+    //attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+//}).addTo(map);
+
+//var marker = L.marker([51.5, -0.09]).addTo(map);
+ 
+
+
+
+ 
+</script>
+
+{%endblock%}
+
